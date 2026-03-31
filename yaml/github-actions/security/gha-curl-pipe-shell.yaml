@@ -2,7 +2,7 @@ rules:
 - id: gha-curl-pipe-shell
   languages:
   - yaml
-  message: >
+  message: >-
     A `run:` step pipes the output of `curl` or `wget` directly into a shell interpreter.
     This is the "curl | bash" install pattern — if the remote server is compromised or the
     URL is hijacked, an attacker can execute arbitrary code in your CI runner. Consider
@@ -10,19 +10,15 @@ rules:
   metadata:
     category: security
     cwe:
-    - "CWE-78: Improper Neutralization of Special Elements used in an OS Command ('OS Command Injection')"
+    - "CWE-829: Inclusion of Functionality from Untrusted Control Sphere"
     owasp:
-    - A03:2021 - Injection
-    - A03:2025 - Injection
+    - A08:2021 - Software and Data Integrity Failures
+    - A08:2025 - Software and Data Integrity Failures
     references:
     - https://docs.github.com/en/actions/security-guides/security-hardening-for-github-actions
     - https://www.idontplaydarts.com/2016/04/detecting-curl-pipe-bash-server-side/
     technology:
     - github-actions
-    - bash
-    - curl
-    cwe2021-top25: true
-    cwe2022-top25: true
     subcategory:
     - vuln
     likelihood: MEDIUM
